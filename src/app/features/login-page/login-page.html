@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="info-container">
+            <div class="card-login">
+        <img src="" alt="logo" />
+        <p class="title"> Faça Login na sua conta </p>
+        <p class="subtitle"> Bem-vindo(a) de volta! </p>
+
+        <div class="input-group">
+            <form [formGroup]="form">
+
+                <input
+                    formControlName="username"
+                    id="username"
+                    placeholder="Digite seu email"
+                    class="input username"
+                > 
+
+                <input
+                    formControlName="password"
+                    id="password"
+                    placeholder="Digite sua senha"
+                    class="input password"
+                >
+
+            </form>
+
+        </div>
+
+        <button type="submit" class="submit-button"> Entrar </button>
+        
+    </div>
+
+        <button class="register-button" (click)="goToRegister()"> Novo por aqui? Faça seu cadastro agora </button>
+     
+    </div>
+
+</div>

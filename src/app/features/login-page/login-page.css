@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Isso centraliza verticalmente */
+    min-height: 100vh; /* Ocupa toda a altura da viewport */
+    padding: 1rem;
+}
+
+.card-login{
+    margin: auto;
+    width: 40rem;
+    padding: 1rem;
+    background-color: #efbfbd;
+    border-radius: 1rem;
+    justify-content: center;
+    text-align: center;
+
+    .title{
+        color: #e99392;
+        font-weight: 600;
+        font-size: 1.625rem;
+    }
+
+    .subtitle{
+        color: #88bfd4;
+        font-weight: 600;
+        font-size: 1.125rem;
+    }
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .input{
+        border-radius: 1.5rem;
+        padding: 1rem;
+        background-color: #e99392;
+        border-style: none;
+        width: 70%;
+        margin-bottom: 1rem;
+        outline: none;
+
+    }
+
+    .input::placeholder {
+        color: #efbfbd;
+        font-weight: 600;
+    }
+
+     .input:focus{
+            border: 3px solid #af6766;
+        }
+
+    .submit-button{
+        margin-top: 2rem;
+        border-radius: 1.5rem;
+        padding: 1rem;
+        background-color: #88bfd4;
+        border-style: none;
+        width: 40%;
+        margin-bottom: 1rem;
+        outline: none;
+        color: #ffe19d;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+}
+
+.info-container{
+    text-align: center;
+}
+
+
+
+.register-button{
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    background-color: #88bfd4;
+    border-style: none;
+    width: 50%;
+    margin-bottom: 1rem;
+    outline: none;
+    color: #ffe19d;
+    font-weight: 800;
+    cursor: pointer;
+}
