@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -8,6 +9,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './login-page.css',
 })
 export class LoginPage {
+
+  constructor(private router: Router){}
+
   private fb = inject(FormBuilder);
 
   form!: FormGroup;
@@ -20,7 +24,7 @@ export class LoginPage {
   }
 
   goToRegister(){
-
+    this.router.navigate(['/cadastro']);
   }
 
 }

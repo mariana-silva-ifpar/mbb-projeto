@@ -7,11 +7,11 @@
     padding: 1rem;
 }
 
-.card-login{
+.register-card{
     margin: auto;
     width: 40rem;
     padding: 1rem;
-    background-color: #efbfbd;
+    background-color: #88bfd4;
     border-radius: 1rem;
     justify-content: center;
     text-align: center;
@@ -20,16 +20,14 @@
         width: 5rem;
     }
 
-    .title{
-        color: #e99392;
-        font-weight: 600;
-        font-size: 1.625rem;
+    .logo{
+        cursor: pointer;
     }
 
-    .subtitle{
-        color: #88bfd4;
+    .title{
+        color: #3f6a7a;
         font-weight: 600;
-        font-size: 1.125rem;
+        font-size: 1.625rem;
     }
 
     .input-group{
@@ -50,62 +48,49 @@
 
     }
 
+    input[type="date"]{
+        color: #efbfbd;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .custom-date {
+        background-image: url("/images/calendar-icon.svg");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 20px;
+    }
+
+
+
     .input::placeholder {
         color: #efbfbd;
         font-weight: 600;
-        padding-left: 1rem;
     }
 
      .input:focus{
             border: 3px solid #af6766;
-        }
-
-    .username{
-        background-image: url("/images/user-icon.svg");
-        background-repeat: no-repeat;
-        background-position: 10px center;
-        background-size: 1rem;
-    }
-
-    .password{
-        background-image: url("/images/password-icon.svg");
-        background-repeat: no-repeat;
-        background-position: 10px center;
-        background-size: 1rem;
     }
 
     .submit-button{
         margin-top: 2rem;
         border-radius: 1.5rem;
         padding: 1rem;
-        background-color: #88bfd4;
+        background-color: #af6766;
         border-style: none;
         width: 40%;
         margin-bottom: 1rem;
         outline: none;
-        color: #ffe19d;
+        color: #efbfbd;
         font-weight: 800;
         cursor: pointer;
     }
 
-}
-
-.info-container{
-    text-align: center;
-}
-
-
-
-.register-button{
-    margin-top: 2rem;
-    border-radius: 1.5rem;
-    padding: 1rem;
-    background-color: #88bfd4;
-    border-style: none;
-    width: 50%;
-    margin-bottom: 1rem;
-    outline: none;
-    color: #ffe19d;
-    font-weight: 800;
-    cursor: pointer;
 }

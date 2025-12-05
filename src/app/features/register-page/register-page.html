@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="register-card">
+
+        <img src="/images/mbb-logo.svg" class="logo" alt="logo" (click)="goToLoginPage()" />
+        <p class="title"> Crie sua conta aqui! </p>
+
+        <div class="input-group">
+            <form>
+
+                <input
+                    formControlName="name"
+                    type="text"
+                    id="name"
+                    placeholder="Digite seu nome"
+                    class="input"
+                >
+
+                <input
+                    formControlName="birthDate"
+                    type="date"
+                    id="birthDate"
+                    class="input custom-date"
+                >
+
+                <input
+                    formControlName="email"
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu email"
+                    class="input"
+                >
+
+                <input
+                    formControlName="username"
+                    type="text"
+                    id="username"
+                    placeholder="Digite seu nome de usuário"
+                    class="input"
+                >
+
+                <input
+                    formControlName="password"
+                    type="password"
+                    id="password"
+                    placeholder="Digite sua senha"
+                    class="input"
+                >
+
+                <input
+                    formControlName="confirmPassword"
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirme sua senha"
+                    class="input"
+                >
+
+            </form>
+        </div>
+
+        <button type="submit" class="submit-button"> Cadastrar </button>
+
+    </div>
+</div>

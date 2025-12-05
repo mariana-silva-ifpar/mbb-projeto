@@ -1,32 +1,32 @@
 <div class="container">
     <div class="info-container">
-            <div class="card-login">
-        <img src="" alt="logo" />
-        <p class="title"> Faça Login na sua conta </p>
-        <p class="subtitle"> Bem-vindo(a) de volta! </p>
+        <div class="card-login">
+            <img src="/images/mbb-logo.svg" alt="logo" />
+            <p class="title"> Faça Login na sua conta </p>
+            <p class="subtitle"> Bem-vindo(a) de volta! </p>
 
-        <div class="input-group">
-            <form [formGroup]="form">
+            <div class="input-group">
+                <form [formGroup]="form">
 
-                <input
-                    formControlName="username"
-                    id="username"
-                    placeholder="Digite seu email"
-                    class="input username"
-                > 
+                    <input
+                        formControlName="username"
+                        id="username"
+                        placeholder="Digite seu nome de usuário"
+                        class="input username"
+                    > 
 
-                <input
-                    formControlName="password"
-                    id="password"
-                    placeholder="Digite sua senha"
-                    class="input password"
-                >
+                    <input
+                        formControlName="password"
+                        id="password"
+                        placeholder="Digite sua senha"
+                        class="input password"
+                    >
 
-            </form>
+                </form>
 
-        </div>
+            </div>
 
-        <button type="submit" class="submit-button"> Entrar </button>
+            <button type="submit" class="submit-button"> Entrar </button>
         
     </div>
 
