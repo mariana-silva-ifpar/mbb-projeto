@@ -6,7 +6,7 @@
             <p class="subtitle"> Bem-vindo(a) de volta! </p>
 
             <div class="input-group">
-                <form [formGroup]="form" (click)="OnSubmit()">
+                <form [formGroup]="form" (ngSubmit)="OnSubmit()">
 
                     <input
                         formControlName="username"
@@ -17,16 +17,20 @@
 
                     <input
                         formControlName="password"
+                        type="password"
                         id="password"
                         placeholder="Digite sua senha"
                         class="input password"
                     >
 
+                <button type="submit" class="submit-button"> Entrar </button>
+
                 </form>
+
+
 
             </div>
 
-            <button type="submit" class="submit-button"> Entrar </button>
         
     </div>
 

@@ -5,7 +5,7 @@
         <p class="title"> Crie sua conta aqui! </p>
 
         <div class="input-group">
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
                 <input
                     formControlName="name"
@@ -13,13 +13,6 @@
                     id="name"
                     placeholder="Digite seu nome"
                     class="input"
-                >
-
-                <input
-                    formControlName="birthDate"
-                    type="date"
-                    id="birthDate"
-                    class="input custom-date"
                 >
 
                 <input
@@ -54,10 +47,10 @@
                     class="input"
                 >
 
+                <button type="submit" class="submit-button"> Cadastrar </button>
+
             </form>
         </div>
-
-        <button type="submit" class="submit-button"> Cadastrar </button>
 
     </div>
 </div>
