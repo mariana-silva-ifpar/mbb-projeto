@@ -35,11 +35,11 @@ export class LoginPage {
     try{
       await this.service.login(username, password);
       console.log('Login realizado.')
+      this.router.navigate(['/inicio']);
     } catch(err){
       console.error(err);
     }
 
-    this.router.navigate(['/inicio']);
   }
 
 }
