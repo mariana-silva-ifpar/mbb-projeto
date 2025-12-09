@@ -27,4 +27,8 @@ export class LoginPage {
     this.router.navigate(['/cadastro']);
   }
 
+  OnSubmit(){
+    this.router.navigate(['/inicio']);
+  }
+
 }

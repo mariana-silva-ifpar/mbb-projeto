@@ -6,7 +6,7 @@
             <p class="subtitle"> Bem-vindo(a) de volta! </p>
 
             <div class="input-group">
-                <form [formGroup]="form">
+                <form [formGroup]="form" (click)="OnSubmit()">
 
                     <input
                         formControlName="username"
