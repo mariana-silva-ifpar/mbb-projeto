@@ -9,12 +9,13 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let item of itens">
+    <tr *ngFor="let item of itens; let i = index">
       <td>{{ item.nome }}</td>
       <td>{{ item.preco }}</td>
       <td>{{ item.categoria }}</td>
       <td>
-        <button (click)="excluir(item)">Excluir</button>
+        <button (click)="editar(item)">Editar</button>
+        <button (click)="excluir(i)">Excluir</button>
       </td>
     </tr>
   </tbody>

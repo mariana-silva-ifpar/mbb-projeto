@@ -1,13 +1,22 @@
 table {
   width: 100%;
   border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  margin-top: 20px;
 }
 
 th {
-  background: #eee;
+  background: #e5a3a3;
+  color: white;
+  font-weight: bold;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
 }

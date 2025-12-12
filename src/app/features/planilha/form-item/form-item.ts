@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-item',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-item.html',
   styleUrls: ['./form-item.css']
 })
-export class FormItemComponent {
+export class FormItemComponent implements OnInit {
 
-  novoItem = {
-    nome: '',
-    preco: null,
-    categoria: ''
-  };
+  @Input() itemParaEditar: any = null;
 
-  constructor(private firestore: Firestore) {}
+  form!: FormGroup;
 
-  async salvar() {
-    const colRef = collection(this.firestore, 'produtos'); // altere se sua coleção tiver outro nome
+  constructor(private fb: FormBuilder) {}
 
-    await addDoc(colRef, this.novoItem);
+  ngOnInit() {
+    this.form = this.fb.group({
+      nome: ['', Validators.required],
+      preco: ['', Validators.required],
+      categoria: ['', Validators.required],
+    });
 
-    // limpar formulário
-    this.novoItem = { nome: '', preco: null, categoria: '' };
+    if (this.itemParaEditar) {
+      this.form.patchValue(this.itemParaEditar);
+    }
+  }
+
+  salvar() {
+    console.log(this.form.value);
   }
 }

@@ -1,27 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabela-itens',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './tabela-itens.html',
   styleUrls: ['./tabela-itens.css']
 })
-export class TabelaItensComponent implements OnInit {
+export class TabelaItensComponent {
 
-  itens: any[] = [];
+  itens = [
+    { nome: 'Item A', preco: 100, categoria: 'X' },
+    { nome: 'Item B', preco: 200, categoria: 'Y' }
+  ];
 
-  constructor(private firestore: Firestore) {}
-
-  ngOnInit() {
-    const col = collection(this.firestore, 'produtos'); // altere se necessário
-
-    collectionData(col, { idField: 'id' }).subscribe(data => {
-      this.itens = data;
-    });
+  editar(item: any) {
+    console.log('Editar', item);
   }
 
-  async excluir(item: any) {
-    const ref = doc(this.firestore, `produtos/${item.id}`);
-    await deleteDoc(ref);
+  excluir(index: number) {
+    this.itens.splice(index, 1);
   }
 }

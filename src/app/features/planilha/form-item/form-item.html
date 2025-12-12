@@ -1,18 +1,22 @@
-<form (ngSubmit)="salvar()" class="form">
-  <div>
-    <label>Nome:</label>
-    <input type="text" [(ngModel)]="novoItem.nome" name="nome" required>
+<form [formGroup]="form" (ngSubmit)="salvar()" class="form">
+
+  <div class="campo">
+    <label>Nome</label>
+    <input type="text" formControlName="nome">
   </div>
 
-  <div>
-    <label>Preço:</label>
-    <input type="number" [(ngModel)]="novoItem.preco" name="preco" required>
+  <div class="campo">
+    <label>Preço</label>
+    <input type="number" formControlName="preco">
   </div>
 
-  <div>
-    <label>Categoria:</label>
-    <input type="text" [(ngModel)]="novoItem.categoria" name="categoria" required>
+  <div class="campo">
+    <label>Categoria</label>
+    <input type="text" formControlName="categoria">
   </div>
 
-  <button type="submit">Salvar</button>
+  <button type="submit" [disabled]="form.invalid">
+    {{ itemParaEditar ? 'Atualizar' : 'Salvar' }}
+  </button>
+
 </form>
