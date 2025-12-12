@@ -1,0 +1,18 @@
+<form (ngSubmit)="salvar()" class="form">
+  <div>
+    <label>Nome:</label>
+    <input type="text" [(ngModel)]="novoItem.nome" name="nome" required>
+  </div>
+
+  <div>
+    <label>Preço:</label>
+    <input type="number" [(ngModel)]="novoItem.preco" name="preco" required>
+  </div>
+
+  <div>
+    <label>Categoria:</label>
+    <input type="text" [(ngModel)]="novoItem.categoria" name="categoria" required>
+  </div>
+
+  <button type="submit">Salvar</button>
+</form>

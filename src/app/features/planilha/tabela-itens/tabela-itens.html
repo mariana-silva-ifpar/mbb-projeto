@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of itens">
+      <td>{{ item.nome }}</td>
+      <td>{{ item.preco }}</td>
+      <td>{{ item.categoria }}</td>
+      <td>
+        <button (click)="excluir(item)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

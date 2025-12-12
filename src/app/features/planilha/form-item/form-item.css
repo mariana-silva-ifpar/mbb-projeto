@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  padding: 6px 12px;
+}
