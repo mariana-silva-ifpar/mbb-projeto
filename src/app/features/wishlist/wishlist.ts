@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
@@ -8,77 +9,52 @@ import { Component } from '@angular/core';
 })
 export class Wishlist {
 
-}
+  // 5 slots para 5 botões em uma linha
+  photos: Array<{ url: string } | null> = Array(5).fill(null);
 
-const grid = document.getElementById("photo-grid") as HTMLElement;
-const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
+  constructor(private router: Router) {}
 
-let photos: (string | null)[] = Array(8).fill(null);
+  // --- ADICIONAR FOTO ---
+  addPhoto(index: number) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
 
-/* renderiza os cards */
-function renderGrid() {
-  grid.innerHTML = "";
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (!file) return;
 
-  photos.forEach((photo, index) => {
-    const card = document.createElement("div");
-    card.className = "photo-card";
-
-    // card com imagem
-    if (photo) {
-      const img = document.createElement("img");
-      img.src = photo;
-      img.className = "preview";
-
-      const removeBtn = document.createElement("button");
-      removeBtn.className = "remove-btn";
-      removeBtn.textContent = "x";
-
-      removeBtn.onclick = () => removePhoto(index);
-
-      card.appendChild(img);
-      card.appendChild(removeBtn);
-
-    } else {
-      // card vazio (+)
-      const label = document.createElement("label");
-      label.className = "add-btn";
-      label.textContent = "+";
-
-      const input = document.createElement("input");
-      input.type = "file";
-      input.accept = "image/*";
-      input.hidden = true;
-
-      input.onchange = (e) => {
-        const file = (e.target as HTMLInputElement).files?.[0];
-        if (!file) return;
-
-        const url = URL.createObjectURL(file);
-        photos[index] = url;
-        renderGrid();
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.photos[index] = { url: reader.result as string };
       };
+      reader.readAsDataURL(file);
+    };
 
-      label.appendChild(input);
-      card.appendChild(label);
-    }
+    input.click();
+  }
 
-    grid.appendChild(card);
-  });
+  // --- REMOVER FOTO ---
+  removePhoto(index: number) {
+    this.photos[index] = null;
+    this.reorganizePhotos();
+  }
+
+  // --- REORGANIZAR FOTOS ---
+  reorganizePhotos() {
+    const filled = this.photos.filter(p => p !== null);
+    const empty = this.photos.filter(p => p === null);
+    this.photos = [...filled, ...empty];
+  }
+
+  // --- VOLTAR AO MENU ---
+  goBackToMenu() {
+    // Altere '/menu' para a rota do seu menu principal
+    this.router.navigate(['/menu']);
+  }
+
+  // --- RESETAR WISHLIST ---
+  resetWishlist() {
+    this.photos = Array(5).fill(null);
+  }
 }
-
-/* remover card e reorganizar */
-function removePhoto(index: number) {
-  photos = photos.filter((_, i) => i !== index);
-  photos.push(null); // mantém sempre 8 cards
-  renderGrid();
-}
-
-/* reset */
-resetBtn.onclick = () => {
-  photos = Array(8).fill(null);
-  renderGrid();
-};
-
-/* iniciar */
-renderGrid();
-

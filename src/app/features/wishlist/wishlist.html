@@ -1,15 +1,40 @@
-<link rel="stylesheet" href="./wishlist.css" />
+<div class="wishlist-wrapper">
 
-<div id="wishlist-container" class="wishlist-wrapper">
-
+  <!-- HEADER -->
   <div class="wishlist-header">
-    <button id="reset-btn" class="reset-btn">↺</button>
+    <button class="reset-btn" (click)="resetWishlist()">↺</button>
     <h1 class="title">WISHLIST</h1>
   </div>
 
-  <div id="photo-grid" class="photo-grid"></div>
+  <!-- GRID DE FOTOS -->
+  <div class="photo-grid">
+    <div 
+      class="photo-card" 
+      *ngFor="let photo of photos; let i = index"
+    >
+      <img 
+        *ngIf="photo" 
+        [src]="photo.url" 
+        class="photo-img"
+        alt="wishlist item"
+      />
+
+      <button 
+        *ngIf="!photo"
+        class="add-btn"
+        (click)="addPhoto(i)"
+      >
+        +
+      </button>
+
+      <button 
+        *ngIf="photo"
+        class="delete-btn"
+        (click)="removePhoto(i)"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
 
 </div>
-
-<script type="module" src="./wishlist.ts"></script>
-
