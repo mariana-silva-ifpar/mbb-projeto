@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginPage } from './features/login-page/login-page';
 import { RegisterPage } from './features/register-page/register-page';
 import { Menu } from './features/menu/menu';
+import { Wishlist } from './features/wishlist/wishlist';
 
 export const routes: Routes = [
     {

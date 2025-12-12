@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* painel */
+.wishlist-wrapper {
+  background: #ffe6a7;
+  padding: 40px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+/* header */
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 46px;
+  font-weight: bold;
+  color: #f2a9c8;
+}
+
+/* botões */
+.reset-btn {
+  background: #9ec3d1;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* grade */
+.photo-grid {
+  background: #9ec3d1;
+  padding: 25px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+}
+
+/* cards */
+.photo-card {
+  width: 130px;
+  height: 180px;
+  background: #e48a92;
+  border-radius: 15px;
+  border: 4px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.add-btn {
+  font-size: 45px;
+  cursor: pointer;
+  color: white;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* excluir */
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 3px 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
