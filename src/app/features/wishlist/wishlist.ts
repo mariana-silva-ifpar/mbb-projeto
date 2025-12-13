@@ -1,21 +1,28 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+interface WishlistItem {
+  id: string;
+  url: string;
+  title: string;
+}
 
 @Component({
   selector: 'app-wishlist',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './wishlist.html',
   styleUrl: './wishlist.css',
 })
 export class Wishlist {
+  
 
-  // 5 slots para 5 botões em uma linha
-  photos: Array<{ url: string } | null> = Array(5).fill(null);
+  photos: WishlistItem[] = [];
 
   constructor(private router: Router) {}
 
-  // --- ADICIONAR FOTO ---
-  addPhoto(index: number) {
+  addPhoto() {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
@@ -26,35 +33,39 @@ export class Wishlist {
 
       const reader = new FileReader();
       reader.onload = () => {
-        this.photos[index] = { url: reader.result as string };
+        const title =
+          prompt('Digite um título para o photocard:') || 'Sem título';
+
+        this.photos = [
+          ...this.photos,
+          {
+            id: crypto.randomUUID(),
+            url: reader.result as string,
+            title
+          }
+        ];
       };
+
       reader.readAsDataURL(file);
     };
 
     input.click();
   }
 
-  // --- REMOVER FOTO ---
-  removePhoto(index: number) {
-    this.photos[index] = null;
-    this.reorganizePhotos();
+  removePhoto(id: string) {
+    this.photos = this.photos.filter(p => p.id !== id);
   }
 
-  // --- REORGANIZAR FOTOS ---
-  reorganizePhotos() {
-    const filled = this.photos.filter(p => p !== null);
-    const empty = this.photos.filter(p => p === null);
-    this.photos = [...filled, ...empty];
+  resetWishlist() {
+    if (!confirm('Deseja limpar toda a wishlist?')) return;
+    this.photos = [];
   }
 
-  // --- VOLTAR AO MENU ---
   goBackToMenu() {
-    // Altere '/menu' para a rota do seu menu principal
     this.router.navigate(['/menu']);
   }
 
-  // --- RESETAR WISHLIST ---
-  resetWishlist() {
-    this.photos = Array(5).fill(null);
+  trackById(index: number, item: WishlistItem) {
+    return item.id;
   }
 }
