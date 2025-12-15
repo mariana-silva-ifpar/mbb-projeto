@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ItemPlanilha } from '../form-item/form-item';
 
 @Component({
   selector: 'app-tabela-itens',
@@ -10,13 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class TabelaItensComponent {
 
-  itens = [
-    { nome: 'Item A', preco: 100, categoria: 'X' },
-    { nome: 'Item B', preco: 200, categoria: 'Y' }
-  ];
+  @Input() itens: ItemPlanilha[] = [];
+  @Output() editarItem = new EventEmitter<ItemPlanilha>();
 
-  editar(item: any) {
-    console.log('Editar', item);
+  editar(item: ItemPlanilha) {
+   this.editarItem.emit(item);
   }
 
   excluir(index: number) {

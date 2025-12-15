@@ -1,29 +1,43 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormItemComponent, ItemPlanilha } from './form-item/form-item';
 import { TabelaItensComponent } from './tabela-itens/tabela-itens';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-planilha',
+  standalone: true,
+  imports: [CommonModule, FormItemComponent, TabelaItensComponent, ReactiveFormsModule],
   templateUrl: './planilha.html',
-  imports: [ReactiveFormsModule, TabelaItensComponent],
   styleUrls: ['./planilha.css']
 })
 export class PlanilhaComponent {
-  form: FormGroup;
 
-  itemParaEditar: any = null;
+  form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      nome: ['', Validators.required],
-      preco: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      categoria: ['', Validators.required],
-    });
-  }
+  itemParaEditar: ItemPlanilha | null = null;
+  itens: ItemPlanilha[] = [];
 
-  salvar() {
-    if (this.form.valid) {
-      console.log(this.form.value);  // Aqui você pode fazer a conexão com o banco de dados
+  salvarItem(item: ItemPlanilha) {
+
+    const index = this.itens.findIndex(i => i.id === item.id);
+    if (index >= 0) {
+      this.itens[index] = item;
     }
+
+    else {
+        this.itens.push(item);
+    }
+   
+    this.itemParaEditar = null;
   }
+
+  editarItem(item: ItemPlanilha) {
+   this.itemParaEditar = item;
 }
+
+
+}
+
+
+

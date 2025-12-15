@@ -1,17 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+export interface ItemPlanilha {
+  id: string;
+  nome: string;
+  preco: number;
+  categoria: string;
+}
 
 @Component({
   selector: 'app-form-item',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './form-item.html',
   styleUrls: ['./form-item.css']
 })
-export class FormItemComponent implements OnInit {
+export class FormItemComponent implements OnInit, OnChanges {
 
-  @Input() itemParaEditar: any = null;
+  @Input() itemParaEditar: ItemPlanilha | null = null;
+  @Output() salvarItem = new EventEmitter<ItemPlanilha>();
 
   form!: FormGroup;
 
@@ -21,15 +28,29 @@ export class FormItemComponent implements OnInit {
     this.form = this.fb.group({
       nome: ['', Validators.required],
       preco: ['', Validators.required],
-      categoria: ['', Validators.required],
+      categoria: ['', Validators.required]
     });
+  }
 
-    if (this.itemParaEditar) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['itemParaEditar'] && this.itemParaEditar) {
       this.form.patchValue(this.itemParaEditar);
     }
   }
 
   salvar() {
-    console.log(this.form.value);
+    if (this.form.invalid) return;
+
+    const item: ItemPlanilha = {
+      id: this.itemParaEditar?.id ?? crypto.randomUUID(),
+      ...this.form.value
+    };
+
+    this.salvarItem.emit(item);
+    this.form.reset();
   }
+
+  get textoBotao(): string {
+    return this.itemParaEditar == null ? 'Salvar' : 'Atualizar';
+}
 }
