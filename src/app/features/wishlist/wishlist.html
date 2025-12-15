@@ -2,44 +2,22 @@
 
   <!-- HEADER -->
   <div class="wishlist-header">
-    <!-- BOTÃO VOLTAR -->
-    <button
-      class="reset-btn"
-      (click)="goBackToMenu()"
-      title="Voltar ao menu"
-    >
-      ↺
-    </button>
+    <button class="reset-btn" (click)="goBackToMenu()">↺</button>
 
     <h1 class="title">WISHLIST</h1>
 
-    <!-- BOTÃO RESET -->
-    <button
-      class="clear-btn"
-      (click)="resetWishlist()"
-      title="Limpar wishlist"
-    >
-      🗑️
-    </button>
+    <button class="clear-btn" (click)="resetWishlist()">🗑️</button>
   </div>
 
   <!-- GRID -->
   <div class="photo-grid">
 
-    <!-- CARDS COM FOTO -->
     <div
       class="photo-card"
       *ngFor="let photo of photos; trackBy: trackById"
     >
-      <img
-        [src]="photo.url"
-        class="photo-img"
-        alt="wishlist photo"
-      />
-
-      <div class="photo-title">
-        {{ photo.title }}
-      </div>
+      <img [src]="photo.url" class="photo-img" />
+      <div class="photo-title">{{ photo.title }}</div>
 
       <button
         class="delete-btn"
@@ -49,16 +27,16 @@
       </button>
     </div>
 
-    <!-- CARD DE ADIÇÃO -->
+    <!-- ADICIONAR -->
     <div class="photo-card add-card">
-      <button
-        class="add-btn"
-        (click)="addPhoto()"
-      >
-        +
-      </button>
+      <button class="add-btn" (click)="addPhoto()">+</button>
     </div>
 
   </div>
+
+  <!-- SALVAR -->
+  <button class="save-btn" (click)="saveWishlist()">
+    💾 SALVAR
+  </button>
 
 </div>

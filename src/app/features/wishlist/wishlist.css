@@ -190,13 +190,48 @@
   background: #ff3b3b;
 }
 
+.save-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: #ffe6f2;
+  border: 2px solid #ff99c8;
+  color: #d14b8f;
+
+  padding: 12px 20px;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #ffb3d9;
+  transform: scale(1.05);
+}
+
+.save-btn:active {
+  transform: scale(0.97);
+}
+
+
 
 /* =========================
    RESPONSIVO
 ========================= */
 
 /* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .photo-grid {
     grid-template-columns: repeat(3, 1fr);
     padding: 30px 20px;
