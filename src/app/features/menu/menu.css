@@ -5,6 +5,10 @@
     justify-content: center;
     min-height: 100vh;
     padding: 1rem;
+    background-image: 
+    linear-gradient(#ffe29dcb,#ffe29dcb),
+    url('/images/pag1.svg'),
+    url('/images/pag2.svg');
 
     .menu-card{
         margin: auto;
@@ -34,7 +38,51 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 1rem;
         margin-bottom: 3rem;
+        font-size: 2rem;
+
+        img{
+            width: 6rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .container .menu-card {
+        width: 22rem;
+        padding: 0.8rem;
+    }
+
+    .container .title {
+        font-size: 3rem;
+    }
+
+    .container .option {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .container .option img {
+        width: 4.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container .menu-card {
+        width: 18rem;
+        padding: 0.6rem;
+    }
+
+    .container .title {
+        font-size: 2.2rem;
+    }
+
+    .container .option {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .container .option img {
+        width: 2.5rem;
     }
 }
