@@ -6,7 +6,7 @@
     min-height: 100vh;
     padding: 1rem;
     background-image: 
-    linear-gradient( #88bed4bb,#88bed4bb),
+    linear-gradient(#efbfbdad,#efbfbdad),
     url('/images/pag1.svg'),
     url('/images/pag2.svg');
 }

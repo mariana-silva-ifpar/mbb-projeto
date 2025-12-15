@@ -33,13 +33,17 @@ export class RegisterPage {
     this.router.navigate(['/login'])
   }
 
-  formInvalid(){
+  formInvalid(): boolean {
     const senha = this.form.get('password')?.value;
     const confirmarSenha = this.form.get('confirmPassword')?.value;
+
+    return !!(senha && confirmarSenha && senha !== confirmarSenha);
   }
 
+
+
   async onSubmit(){
-    if(this.form.invalid) return;
+    if(this.formInvalid()) return;
 
     try {
       await this.service.register(this.form.value);
