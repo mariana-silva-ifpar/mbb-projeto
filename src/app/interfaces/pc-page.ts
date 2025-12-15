@@ -1,5 +1,4 @@
-export interface PhotocardPage {
+export interface PcPage {
   id: number;
   images: (string | null)[];
-  saved: boolean;
 }

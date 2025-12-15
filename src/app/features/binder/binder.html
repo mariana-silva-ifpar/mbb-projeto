@@ -1,1 +1,43 @@
-<p>binder works!</p>
+<h2>Meu Binder</h2>
+
+<div class="pages">
+
+  <div class="page" *ngFor="let page of pages; let p = index">
+
+    <div class="page-header">
+      <span>Página {{ p + 1 }}</span>
+      <button class="delete-page" (click)="removePage(p)">🗑️</button>
+    </div>
+
+    <div class="cards">
+
+      <div class="card" *ngFor="let img of page.images; let i = index">
+
+        <!-- vazio -->
+        <label *ngIf="!img" class="upload">
+          +
+          <input
+            type="file"
+            hidden
+            accept="image/*"
+            (change)="uploadImage($event, p, i)"
+          />
+        </label>
+
+        <!-- com imagem -->
+        <div *ngIf="img" class="preview">
+          <img [src]="img" />
+          <button class="remove-image" (click)="removeImage(p, i)">✕</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="actions">
+  <button (click)="addPage()">➕ Nova página</button>
+  <button (click)="save()">💾 Salvar</button>
+</div>
