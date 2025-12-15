@@ -2,9 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Isso centraliza verticalmente */
-    min-height: 100vh; /* Ocupa toda a altura da viewport */
+    justify-content: center;
+    min-height: 100vh;
     padding: 1rem;
+    background-image: 
+    linear-gradient(#ffe29dcb,#ffe29dcb),
+    url('/images/pag1.svg'),
+    url('/images/pag2.svg');
 }
 
 .card-login{

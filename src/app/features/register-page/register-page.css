@@ -5,6 +5,10 @@
     justify-content: center;
     min-height: 100vh;
     padding: 1rem;
+    background-image: 
+    linear-gradient( #88bed4bb,#88bed4bb),
+    url('/images/pag1.svg'),
+    url('/images/pag2.svg');
 }
 
 .register-card{
@@ -41,6 +45,8 @@
         border-radius: 1.5rem;
         padding: 1rem;
         background-color: #e99392;
+        color: #995756;
+        font-weight: 600;
         border-style: none;
         width: 70%;
         margin-bottom: 1rem;
