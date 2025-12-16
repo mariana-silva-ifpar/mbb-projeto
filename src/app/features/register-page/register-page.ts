@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register-page',
@@ -33,16 +34,54 @@ export class RegisterPage {
     this.router.navigate(['/login'])
   }
 
+  formInvalid(): boolean {
+    const senha = this.form.get('password')?.value;
+    const confirmarSenha = this.form.get('confirmPassword')?.value;
+
+    return !!(senha && confirmarSenha && senha !== confirmarSenha);
+  }
+
+
+
   async onSubmit(){
-    if(this.form.invalid) return;
+    if(this.formInvalid()) return;
 
     try {
       await this.service.register(this.form.value);
-      console.log("Cadastro concluído!")
+      Swal.fire({
+              title: "Sucesso ao realizar cadastro.",
+              width: 600,
+              padding: "3em",
+              color: "#e99392",
+              background: "#f5e2e2ff",
+              backdrop: `
+                rgba(68, 68, 126, 0.4)
+                left top
+                no-repeat
+              `
+            });
       this.form.reset();
       this.goToLoginPage();
     } catch(err){
-      console.log("Erro ao cadastrar", err)
+      Swal.fire({
+              title: "Erro ao realizar cadastro.",
+              width: 600,
+              padding: "3em",
+              color: "#cc110eff",
+              background: "#ffb9b9ff",
+              backdrop: `
+                rgba(66, 0, 0, 0.4)
+                left top
+                no-repeat
+              `,
+              showDenyButton: true,
+              denyButtonText: `Voltar para o login`,
+            }).then((result) => {
+               if (result.isDenied) {
+                Swal.fire("Cadastro não realizado.");
+                this.goToLoginPage();
+              }
+            });
     }
   }
 
