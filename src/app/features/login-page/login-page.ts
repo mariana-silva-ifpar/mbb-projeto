@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login-page',
@@ -34,7 +35,18 @@ export class LoginPage {
 
     try{
       await this.service.login(username, password);
-      console.log('Login realizado.')
+      Swal.fire({
+        title: "Sucesso ao realizar login.",
+        width: 600,
+        padding: "3em",
+        color: "#e99392",
+        background: "#f5e2e2ff",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          left top
+          no-repeat
+        `
+      });
       this.router.navigate(['/inicio']);
     } catch(err){
       console.error(err);
