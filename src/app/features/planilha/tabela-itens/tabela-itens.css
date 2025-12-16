@@ -1,34 +1,30 @@
 table {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
   border-collapse: collapse;
-  background: #fff;
+  background-color: #ffffff;
 }
 
-thead {
-  background-color: #e89cae;
-  color: #fff;
-}
-
-th, td {
-  padding: 12px;
+/* CABEÇALHO */
+thead th {
+  background-color: #e79a9a;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 18px;
   text-align: center;
-  border: 1px solid #ddd;
 }
 
-button {
-  margin: 0 5px;
-  padding: 6px 10px;
-  border: none;
-  cursor: pointer;
+/* CORPO */
+tbody td {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.editar {
-  background-color: #ffd966;
-}
-
-.excluir {
-  background-color: #f28b82;
-  color: white;
+/* ÚLTIMA LINHA */
+tbody tr:last-child td {
+  border-bottom: none;
 }

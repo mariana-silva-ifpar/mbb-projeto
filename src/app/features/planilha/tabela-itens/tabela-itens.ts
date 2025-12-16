@@ -12,13 +12,15 @@ import { ItemPlanilha } from '../form-item/form-item';
 export class TabelaItensComponent {
 
   @Input() itens: ItemPlanilha[] = [];
+
   @Output() editarItem = new EventEmitter<ItemPlanilha>();
+  @Output() excluirItem = new EventEmitter<ItemPlanilha>();
 
   editar(item: ItemPlanilha) {
-   this.editarItem.emit(item);
+    this.editarItem.emit(item);
   }
 
-  excluir(index: number) {
-    this.itens.splice(index, 1);
+  excluir(item: ItemPlanilha) {
+    this.excluirItem.emit(item);
   }
 }

@@ -1,24 +1,49 @@
 <form [formGroup]="form" (ngSubmit)="salvar()" class="form">
 
-    <div class="campo">
-      <label>Nome</label>
-      <input type="text" formControlName="nome">
-    </div>
+  <label>Nome do produto</label>
+  <input type="text" formControlName="nome">
 
-    <div class="campo">
-      <label>Preço</label>
-      <input type="number" formControlName="preco">
-    </div>
+  <label>
+    <input type="checkbox" formControlName="produtoPago">
+    Produto já foi pago
+  </label>
 
-    <div class="campo">
-      <label>Categoria</label>
-      <input type="text" formControlName="categoria">
-    </div>
+  <div *ngIf="!form.get('produtoPago')?.value">
+    <label>Preço do produto</label>
+    <input type="number" formControlName="precoProduto">
+  </div>
 
+
+  <label>
+    <input type="checkbox" formControlName="freteInternacionalPago">
+    Frete internacional já foi pago
+  </label>
+
+  <div *ngIf="!form.get('freteInternacionalPago')?.value">
+    <label>Frete internacional</label>
+    <input type="number" formControlName="freteInternacional">
+  </div>
+
+
+  <label>
+    <input type="checkbox" formControlName="freteNacionalPago">
+    Frete nacional já foi pago
+  </label>
+
+  <div *ngIf="!form.get('freteNacionalPago')?.value">
+    <label>Frete nacional</label>
+    <input type="number" formControlName="freteNacional">
+  </div>
+
+  <label>Status de envio</label>
+  <select formControlName="statusEnvio">
+    <option *ngFor="let s of statusOptions" [value]="s">
+      {{ s }}
+    </option>
+  </select>
 
   <button type="submit">
     {{ textoBotao }}
   </button>
 
-  </form>
-
+</form>

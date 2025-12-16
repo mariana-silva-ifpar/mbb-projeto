@@ -1,17 +1,18 @@
-<div class="container">
-  <div class="planilha-card">
-    <form [formGroup]="form" (ngSubmit)="salvarItem(form.value)" class="form"> </form>
+<div class="pagina">
 
-        <app-form-item
-          [itemParaEditar]="itemParaEditar"
-          (salvarItem)="salvarItem($event)">
-        </app-form-item>
-
-      <app-tabela-itens
-        [itens]="itens"
-        (editarItem)="editarItem($event)">
-      </app-tabela-itens>
-
+  <div class="header">
+      <button class="reset-btn" (click)="goBackToMenu()">↺</button>
+      <h1 class="titulo">Planilha</h1>
   </div>
-    
+
+  <div class="card">
+    <app-form-item [itemParaEditar]="itemParaEditar"
+    (salvarItem)="salvarItem($event)"></app-form-item>
+  </div>
+
+  <div class="card">
+    <app-tabela-itens [itens]="itens" (editarItem)="editarItem($event)"
+    (excluirItem)="excluirItem($event)"></app-tabela-itens>
+  </div>
+
 </div>
