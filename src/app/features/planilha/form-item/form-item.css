@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* LABELS */
+.form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* INPUTS E SELECT */
+.form input[type="text"],
+.form input[type="number"],
+.form select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form input:focus,
+.form select:focus {
+  outline: none;
+  border-color: #e79a9a;
+}
+
+/* CHECKBOX + TEXTO */
+.form label input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #e79a9a;
+}
+
+.form label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* CAMPOS CONDICIONAIS (PREÇOS) */
+.form div {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* BOTÃO */
+.form button {
+  margin-top: 20px;
+  padding: 14px;
+  background-color: #e79a9a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.form button:hover {
+  background-color: #dd8a8a;
+  transform: translateY(-1px);
+}
+
+.form button:active {
+  transform: translateY(0);
+}

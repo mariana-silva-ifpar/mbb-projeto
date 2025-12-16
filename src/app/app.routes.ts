@@ -3,8 +3,8 @@ import { LoginPage } from './features/login-page/login-page';
 import { RegisterPage } from './features/register-page/register-page';
 import { Menu } from './features/menu/menu';
 import { Binder } from './features/binder/binder';
-import { Planilha } from './features/planilha/planilha';
 import { Wishlist } from './features/wishlist/wishlist';
+import { PlanilhaComponent } from './features/planilha/planilha';
 
 export const routes: Routes = [
     {
@@ -34,6 +34,6 @@ export const routes: Routes = [
     },
     {
         path: 'planilha',
-        component: Planilha
+        component: PlanilhaComponent
     }
 ];
