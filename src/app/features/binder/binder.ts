@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PcPage } from '../../interfaces/pc-page';
 import { PhotocardService } from '../../services/photocard-service';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-binder',
@@ -72,7 +73,18 @@ export class BinderComponent implements OnInit {
 
   async save() {
     await this.photocardService.saveBinder(this.uid, this.pages);
-    alert('Binder salvo com sucesso 💖');
+    Swal.fire({
+      title: "Binder salvo com sucesso.",
+      width: 600,
+      padding: "3em",
+      color: "#e99392",
+      background: "#f5e2e2ff",
+      backdrop: `
+        rgba(68, 68, 126, 0.4)
+        left top
+        no-repeat
+      `
+    });
   }
 
   
