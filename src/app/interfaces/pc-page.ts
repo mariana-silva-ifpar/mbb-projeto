@@ -1,4 +1,4 @@
 export interface PcPage {
-  id: number;
+  id: string;
   images: (string | null)[];
 }

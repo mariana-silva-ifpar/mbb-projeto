@@ -1,43 +1,67 @@
-<h2>Meu Binder</h2>
+<div class="binder-container">
 
-<div class="pages">
 
-  <div class="page" *ngFor="let page of pages; let p = index">
+  <div class="binder-header">
+    <button class="reset-btn" (click)="goBack()"> ↩</button>
 
-    <div class="page-header">
-      <span>Página {{ p + 1 }}</span>
-      <button class="delete-page" (click)="removePage(p)">🗑️</button>
+    <div class="binder-actions">
+      <button class="btn primary" (click)="addPage()">
+          ➕ Adicionar página
+      </button>
+
+      <button class="btn success" (click)="save()">
+          💾 Salvar
+      </button>
     </div>
+  </div>
 
-    <div class="cards">
 
-      <div class="card" *ngFor="let img of page.images; let i = index">
+  <div class="pages">
 
-        <!-- vazio -->
-        <label *ngIf="!img" class="upload">
-          +
-          <input
-            type="file"
-            hidden
-            accept="image/*"
-            (change)="uploadImage($event, p, i)"
-          />
-        </label>
+    <div
+      class="page"
+      *ngFor="let page of pages; let p = index; trackBy: trackById"
+    >
 
-        <!-- com imagem -->
-        <div *ngIf="img" class="preview">
+   
+      <button
+        class="remove-page"
+        (click)="removePage(p)"
+      >
+        ✕
+      </button>
+
+    
+      <div
+        class="card"
+        *ngFor="let img of page.images; let i = index"
+      >
+
+
+        <div class="preview" *ngIf="img">
           <img [src]="img" />
-          <button class="remove-image" (click)="removeImage(p, i)">✕</button>
+
+          <button
+            class="remove-img"
+            (click)="removeImage(p, i)"
+          >
+            ✕
+          </button>
+        </div>
+
+       
+        <div
+          class="upload"
+          *ngIf="!img"
+          (click)="addImage(p, i)"
+        >
+          +
         </div>
 
       </div>
 
     </div>
+
   </div>
 
-</div>
-
-<div class="actions">
-  <button (click)="addPage()">➕ Nova página</button>
-  <button (click)="save()">💾 Salvar</button>
 </div>

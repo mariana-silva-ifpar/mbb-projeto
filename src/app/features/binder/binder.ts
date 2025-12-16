@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { PcPage } from '../../interfaces/pc-page';
 import { PhotocardService } from '../../services/photocard-service';
 import { AuthService } from '../../services/auth.service';
-
-import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-binder',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './binder.html',
-  styleUrls: ['./binder.css']
+  styleUrl: './binder.css'
 })
 export class BinderComponent implements OnInit {
 
@@ -22,23 +21,12 @@ export class BinderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private photocardService: PhotocardService,
-    private auth: Auth
+    private router: Router
   ) {}
 
-  // 🔐 GARANTE QUE O USUÁRIO ESTÁ AUTENTICADO
-  ngOnInit() {
-    onAuthStateChanged(this.auth, async (user) => {
-      if (!user) {
-        console.error('Usuário não autenticado');
-        return;
-      }
 
-      this.uid = user.uid;
-      await this.load();
-    });
-  }
-
-  async load() {
+  async ngOnInit() {
+    this.uid = this.authService.getUserUid();
     this.pages = await this.photocardService.loadBinder(this.uid);
 
     if (this.pages.length === 0) {
@@ -48,35 +36,51 @@ export class BinderComponent implements OnInit {
 
   addPage() {
     this.pages.push({
-      id: Date.now(),
+      id: crypto.randomUUID(),
       images: [null, null, null, null]
     });
   }
 
-  removePage(pageIndex: number) {
-    this.pages.splice(pageIndex, 1);
+  removePage(index: number) {
+    this.pages.splice(index, 1);
   }
 
-  async uploadImage(event: any, pageIndex: number, imgIndex: number) {
-    const file = event.target.files[0];
-    if (!file || !this.uid) return;
+  
+  addImage(pageIndex: number, imgIndex: number) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
 
-    const url = await this.photocardService.uploadImage(this.uid, file);
-    this.pages[pageIndex].images[imgIndex] = url;
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.pages[pageIndex].images[imgIndex] = reader.result as string;
+      };
+
+      reader.readAsDataURL(file);
+    };
+
+    input.click();
   }
 
-  async removeImage(pageIndex: number, imgIndex: number) {
-    const url = this.pages[pageIndex].images[imgIndex];
-
-    if (url) {
-      await this.photocardService.deleteImageByUrl(url);
-    }
-
+  removeImage(pageIndex: number, imgIndex: number) {
     this.pages[pageIndex].images[imgIndex] = null;
   }
 
   async save() {
     await this.photocardService.saveBinder(this.uid, this.pages);
-    alert('Binder salvo com sucesso!');
+    alert('Binder salvo com sucesso 💖');
+  }
+
+  
+  goBack() {
+    this.router.navigate(['/inicio']);
+  }
+
+  trackById(index: number, page: PcPage) {
+    return page.id;
   }
 }
