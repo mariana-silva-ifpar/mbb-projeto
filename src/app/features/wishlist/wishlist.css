@@ -1,0 +1,274 @@
+/* =========================
+   FUNDO GERAL
+========================= */
+.wishlist-wrapper {
+  background: #ffe5a3;
+  min-height: 100vh;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   HEADER
+========================= */
+.wishlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Botão voltar */
+.reset-btn {
+  position: absolute;
+  left: 0;
+  background: #94cbe1;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #ff7fb5;
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Botão limpar */
+.clear-btn {
+  position: absolute;
+  right: 0;
+  background: #ff9aa2;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-btn:hover {
+  transform: scale(1.1);
+  background: #ff6f7d;
+}
+
+/* Título */
+.title {
+  font-size: 40px;
+  color: #f4a8c6;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* =========================
+   GRID AZUL
+========================= */
+.photo-grid {
+  background: #8ec0d4;
+  padding: 40px 30px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  justify-items: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* =========================
+   CARD
+========================= */
+.photo-card {
+  width: 120px;
+  height: 160px;
+  background: #e79197;
+  border-radius: 12px;
+  border: 4px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Card de adicionar */
+.add-card {
+  background: #e79197;
+}
+
+/* Imagem */
+.photo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Título da imagem */
+.photo-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-size: 12px;
+  padding: 6px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+/* Botão + */
+.add-btn {
+  font-size: 60px;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.15s;
+  line-height: 1;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Botão excluir */
+.delete-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(255, 95, 95, 0.95);
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+  background: #ff3b3b;
+}
+
+.save-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: #ffe6f2;
+  border: 2px solid #ff99c8;
+  color: #d14b8f;
+
+  padding: 12px 20px;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #ffb3d9;
+  transform: scale(1.05);
+}
+
+.save-btn:active {
+  transform: scale(0.97);
+}
+
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+/* Mobile */
+@media (max-width: 800px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 30px 20px;
+    gap: 20px;
+    width: 80% !important;
+  }
+
+  .photo-card {
+    width: 100px;
+    height: 140px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .reset-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .clear-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 400px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photo-card {
+    width: 90px;
+    height: 130px;
+  }
+}
+

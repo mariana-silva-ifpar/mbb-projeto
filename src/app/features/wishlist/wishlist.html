@@ -1,1 +1,42 @@
-<p>wishlist works!</p>
+<div class="wishlist-wrapper">
+
+  <!-- HEADER -->
+  <div class="wishlist-header">
+    <button class="reset-btn" (click)="goBackToMenu()">↺</button>
+
+    <h1 class="title">WISHLIST</h1>
+
+    <button class="clear-btn" (click)="resetWishlist()">🗑️</button>
+  </div>
+
+  <!-- GRID -->
+  <div class="photo-grid">
+
+    <div
+      class="photo-card"
+      *ngFor="let photo of photos; trackBy: trackById"
+    >
+      <img [src]="photo.url" class="photo-img" />
+      <div class="photo-title">{{ photo.title }}</div>
+
+      <button
+        class="delete-btn"
+        (click)="removePhoto(photo.id)"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- ADICIONAR -->
+    <div class="photo-card add-card">
+      <button class="add-btn" (click)="addPhoto()">+</button>
+    </div>
+
+  </div>
+
+  <!-- SALVAR -->
+  <button class="save-btn" (click)="saveWishlist()">
+    💾 SALVAR
+  </button>
+
+</div>
