@@ -1,1 +1,67 @@
-<p>binder works!</p>
+<div class="binder-container">
+
+
+  <div class="binder-header">
+    <button class="reset-btn" (click)="goBack()"> ↩</button>
+
+    <div class="binder-actions">
+      <button class="btn primary" (click)="addPage()">
+          ➕ Adicionar página
+      </button>
+
+      <button class="btn success" (click)="save()">
+          💾 Salvar
+      </button>
+    </div>
+  </div>
+
+
+  <div class="pages">
+
+    <div
+      class="page"
+      *ngFor="let page of pages; let p = index; trackBy: trackById"
+    >
+
+   
+      <button
+        class="remove-page"
+        (click)="removePage(p)"
+      >
+        ✕
+      </button>
+
+    
+      <div
+        class="card"
+        *ngFor="let img of page.images; let i = index"
+      >
+
+
+        <div class="preview" *ngIf="img">
+          <img [src]="img" />
+
+          <button
+            class="remove-img"
+            (click)="removeImage(p, i)"
+          >
+            ✕
+          </button>
+        </div>
+
+       
+        <div
+          class="upload"
+          *ngIf="!img"
+          (click)="addImage(p, i)"
+        >
+          +
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
