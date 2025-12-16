@@ -3,9 +3,8 @@
 ========================= */
 .wishlist-wrapper {
   background: #ffe5a3;
-  width: 100%;
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -236,6 +235,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 30px 20px;
     gap: 20px;
+    width: 80% !important;
   }
 
   .photo-card {

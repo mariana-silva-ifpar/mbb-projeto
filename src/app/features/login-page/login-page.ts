@@ -49,7 +49,18 @@ export class LoginPage {
       });
       this.router.navigate(['/inicio']);
     } catch(err){
-      console.error(err);
+      Swal.fire({
+        title: "Erro ao realizar o login.",
+        width: 600,
+        padding: "3em",
+        color: "#cc110eff",
+        background: "#ffb9b9ff",
+        backdrop: `
+          rgba(66, 0, 0, 0.4)
+          left top
+          no-repeat
+        `
+      });
     }
 
   }

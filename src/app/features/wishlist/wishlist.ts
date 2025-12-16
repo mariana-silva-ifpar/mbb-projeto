@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { WishlistService } from '../../services/wishlist-service';
+import Swal from 'sweetalert2'
 
 interface WishlistItem {
   id: string;
@@ -75,24 +76,52 @@ export class Wishlist implements OnInit {
   ================================= */
   async saveWishlist() {
     await this.wishlistService.saveAll(this.photos);
-    alert('Wishlist salva com sucesso 💖');
+    Swal.fire({
+      title: "Wishlist salva com sucesso.",
+      width: 600,
+      padding: "3em",
+      color: "#e99392",
+      background: "#f5e2e2ff",
+      backdrop: `
+        rgba(68, 68, 126, 0.4)
+        left top
+        no-repeat
+      `
+    });
   }
 
   /* ================================
         LIMPAR
   ================================= */
   async resetWishlist() {
-    if (!confirm('Deseja limpar toda a wishlist?')) return;
-
-    this.photos = [];
-    await this.wishlistService.clear();
+    Swal.fire({
+      title: "Deseja limpar a wishlist?",
+      width: 600,
+      padding: "3em",
+      color: "#cc110eff",
+      background: "#ffb9b9ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+        Swal.fire("Wishlist limpa com sucesso");
+        this.photos = [];
+        await this.wishlistService.clear();
+      }
+    });
   }
 
   /* ================================
         VOLTAR
   ================================= */
   goBackToMenu() {
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/inicio']);
   }
 
   trackById(index: number, item: WishlistItem) {
