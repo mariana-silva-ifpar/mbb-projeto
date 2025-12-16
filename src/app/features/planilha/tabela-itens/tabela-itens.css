@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+/* CABEÇALHO */
+thead th {
+  background-color: #e79a9a;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 18px;
+  text-align: center;
+}
+
+/* CORPO */
+tbody td {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* ÚLTIMA LINHA */
+tbody tr:last-child td {
+  border-bottom: none;
+}
