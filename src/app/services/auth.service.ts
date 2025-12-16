@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
+} from '@angular/fire/auth';
+
 import { UserService } from './user.service';
 import { collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
 
@@ -12,9 +18,12 @@ export class AuthService {
     private auth: Auth,
     private userService: UserService,
     private firestore: Firestore
-  ){}
+  ) {}
 
-  async register(form: any){
+  // =========================
+  // REGISTRO
+  // =========================
+  async register(form: any) {
     const credential = await createUserWithEmailAndPassword(
       this.auth,
       form.email,
@@ -39,6 +48,9 @@ export class AuthService {
     return firebaseUser;
   }
 
+  // =========================
+  // LOGIN
+  // =========================
   async login(username: string, password: string) {
 
     const usersRef = collection(this.firestore, 'users');
@@ -54,5 +66,24 @@ export class AuthService {
 
     return signInWithEmailAndPassword(this.auth, email, password);
   }
-  
+
+  // =========================
+  // 🔑 MÉTODOS NOVOS (IMPORTANTE)
+  // =========================
+
+  /** Retorna o usuário atual do Firebase */
+  getCurrentUser() {
+    return this.auth.currentUser;
+  }
+
+  /** Retorna o UID do usuário logado */
+  getUserUid(): string {
+    const user = this.auth.currentUser;
+
+    if (!user) {
+      throw new Error('Usuário não autenticado');
+    }
+
+    return user.uid;
+  }
 }
