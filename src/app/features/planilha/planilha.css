@@ -1,0 +1,58 @@
+.pagina {
+  min-height: 100vh;
+  background-color: #fde3a7;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER alinhada com os cards */
+.header {
+  width: 60%;
+  max-width: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.titulo {
+  font-size: 48px;
+  font-weight: 700;
+  color: #e8a1a1;
+  margin: 0;
+}
+
+/* CARD */
+.card {
+  background: #a0bed8;
+  width: 60%;
+  max-width: 750px;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+/* BOTÃO DE RESET */
+.reset-btn {
+  position: absolute;
+  left: 0;
+  background: #94cbe1;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #ff7fb5;
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-btn:hover {
+  transform: scale(1.1);
+}
