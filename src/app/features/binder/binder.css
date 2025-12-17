@@ -178,3 +178,65 @@
   color: white;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+
+  /* ===== CONTAINER ===== */
+  .binder-container {
+    padding: 16px;
+  }
+
+  /* ===== HEADER ===== */
+  .binder-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .binder-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .reset-btn {
+    align-self: flex-start;
+  }
+
+  /* ===== PÁGINAS ===== */
+  .pages {
+    gap: 20px;
+  }
+
+  .page {
+    width: 100%;
+    padding: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    width: 100%;
+    aspect-ratio: 5 / 7;
+    height: auto;
+  }
+
+  /* ===== BOTÕES DE REMOVER ===== */
+  .remove-page {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .remove-img {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+}

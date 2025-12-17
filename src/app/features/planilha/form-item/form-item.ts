@@ -28,7 +28,7 @@ export class FormItemComponent implements OnInit, OnChanges {
 
   form!: FormGroup;
 
-  statusOptions = ['Não enviado', 'Em trânsito', 'Entregue'];
+  statusOptions = ['Não enviado', 'Em trânsito', 'Vindo pra mim', 'Entregue'];
 
   constructor(private fb: FormBuilder) {}
 

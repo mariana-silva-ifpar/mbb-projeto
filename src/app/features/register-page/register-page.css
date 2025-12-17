@@ -100,3 +100,50 @@
     }
 
 }
+
+@media (max-width: 768px) {
+
+  .register-card {
+    width: 28rem;
+  }
+
+  .register-card img {
+    width: 4rem;
+  }
+
+  .register-card .title {
+    font-size: 1.4rem;
+  }
+
+  .register-card .input {
+    width: 80%;
+  }
+
+  .register-card .submit-button {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .register-card {
+    width: 20rem;
+    padding: 0.8rem;
+  }
+
+  .register-card img {
+    width: 3.5rem;
+  }
+
+  .register-card .title {
+    font-size: 1.25rem;
+  }
+
+  .register-card .input {
+    width: 90%;
+  }
+
+  .register-card .submit-button {
+    width: 70%;
+  }
+}

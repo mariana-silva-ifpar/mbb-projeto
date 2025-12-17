@@ -53,8 +53,6 @@ export class Wishlist implements OnInit {
           title
         });
 
-        // salva tudo (porque o service salva lista inteira)
-        await this.wishlistService.saveAll(this.photos);
       };
 
       reader.readAsDataURL(file);

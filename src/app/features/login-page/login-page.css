@@ -115,3 +115,67 @@
     font-weight: 800;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+
+  .card-login {
+    width: 28rem;
+  }
+
+  .card-login img {
+    width: 4rem;
+  }
+
+  .card-login .title {
+    font-size: 1.4rem;
+  }
+
+  .card-login .subtitle {
+    font-size: 1rem;
+  }
+
+  .card-login .input {
+    width: 80%;
+  }
+
+  .card-login .submit-button {
+    width: 50%;
+  }
+
+  .register-button {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .card-login {
+    width: 20rem;
+    padding: 0.8rem;
+  }
+
+  .card-login img {
+    width: 3.5rem;
+  }
+
+  .card-login .title {
+    font-size: 1.25rem;
+  }
+
+  .card-login .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .card-login .input {
+    width: 70%;
+    padding-left: 2.3rem;
+  }
+
+  .card-login .submit-button {
+    width: 70%;
+  }
+
+  .register-button {
+    width: 75%;
+  }
+}

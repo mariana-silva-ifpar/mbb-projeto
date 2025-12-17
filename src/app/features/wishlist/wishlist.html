@@ -6,7 +6,18 @@
 
     <h1 class="title">WISHLIST</h1>
 
-    <button class="clear-btn" (click)="resetWishlist()">🗑️</button>
+    <div class="buttons">
+        <!-- SALVAR -->
+      <button class="save-btn" (click)="saveWishlist()">
+        <span class="material-icons save-icon">save</span>
+        <span class="save-text">Salvar</span>
+      </button>
+
+
+
+      <button class="clear-btn" (click)="resetWishlist()">🗑️</button>
+    </div>
+      
   </div>
 
   <!-- GRID -->
@@ -33,10 +44,5 @@
     </div>
 
   </div>
-
-  <!-- SALVAR -->
-  <button class="save-btn" (click)="saveWishlist()">
-    💾 SALVAR
-  </button>
 
 </div>

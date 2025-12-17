@@ -48,9 +48,9 @@
 }
 
 @media (max-width: 768px) {
+
     .container .menu-card {
         width: 22rem;
-        padding: 0.8rem;
     }
 
     .container .title {
@@ -68,9 +68,9 @@
 }
 
 @media (max-width: 480px) {
+
     .container .menu-card {
         width: 18rem;
-        padding: 0.6rem;
     }
 
     .container .title {
