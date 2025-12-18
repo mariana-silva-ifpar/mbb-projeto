@@ -62,27 +62,55 @@ export class RegisterPage {
             });
       this.form.reset();
       this.goToLoginPage();
-    } catch(err){
-      Swal.fire({
-              title: "Erro ao realizar cadastro.",
-              width: 600,
-              padding: "3em",
-              color: "#cc110eff",
-              background: "#ffb9b9ff",
-              backdrop: `
-                rgba(66, 0, 0, 0.4)
-                left top
-                no-repeat
-              `,
-              showDenyButton: true,
-              denyButtonText: `Voltar para o login`,
-            }).then((result) => {
-               if (result.isDenied) {
-                Swal.fire("Cadastro não realizado.");
-                this.goToLoginPage();
-                
-              }
-            });
+    } catch(err: any){
+      if(err.message === 'Este nome de usuário já está em uso'){
+        Swal.fire({
+          title: "Nome de usuário já existente.",
+          width: 600,
+          padding: "3em",
+          color: "#cc110eff",
+          background: "#ffb9b9ff",
+          backdrop: `
+            rgba(66, 0, 0, 0.4)
+            left top
+            no-repeat
+          `,
+        })
+      } else if(err.message = 'Esse e-mail já está em uso') {
+          Swal.fire({
+            title: "E-mail já cadastrado.",
+            width: 600,
+            padding: "3em",
+            color: "#cc110eff",
+            background: "#ffb9b9ff",
+            backdrop: `
+              rgba(66, 0, 0, 0.4)
+              left top
+              no-repeat
+            `,
+          })
+      } else {
+          Swal.fire({
+            title: "Erro ao realizar cadastro.",
+            width: 600,
+            padding: "3em",
+            color: "#cc110eff",
+            background: "#ffb9b9ff",
+            backdrop: `
+              rgba(66, 0, 0, 0.4)
+              left top
+              no-repeat
+            `,
+            showDenyButton: true,
+            denyButtonText: `Voltar para o login`,
+          }).then((result) => {
+              if (result.isDenied) {
+              Swal.fire("Cadastro não realizado.");
+              this.goToLoginPage();
+              
+            }
+          });
+      }
     }
   }
 

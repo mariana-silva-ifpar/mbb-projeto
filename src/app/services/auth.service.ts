@@ -27,7 +27,15 @@ export class AuthService {
   // REGISTRO
   // =========================
   async register(form: any) {
-    const credential = await createUserWithEmailAndPassword(
+
+    const usernameAlreadyExists = await this.userService.usernameExists(form.username);
+
+    if (usernameAlreadyExists) {
+      throw new Error('Este nome de usuário já está em uso');
+    }
+
+    try{
+      const credential = await createUserWithEmailAndPassword(
       this.auth,
       form.email,
       form.password
@@ -49,6 +57,14 @@ export class AuthService {
     });
 
     return firebaseUser;
+    } catch(error: any){
+      if (error.code === 'auth/email-already-in-use') {
+      throw new Error('Este e-mail já está em uso');
+    }
+
+    throw error
+    }
+    
   }
 
   // =========================
