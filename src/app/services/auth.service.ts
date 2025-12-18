@@ -11,6 +11,7 @@ import {
 import { UserService } from './user.service';
 import { collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { signOut } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -84,6 +85,13 @@ export class AuthService {
     const email = userData.email;
 
     return signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  // =========================
+  // LOGOUT
+  // =========================
+  async logout(){
+    await signOut(this.auth);
   }
 
   // =========================
