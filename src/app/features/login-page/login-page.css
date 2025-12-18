@@ -119,7 +119,7 @@
 @media (max-width: 768px) {
 
   .card-login {
-    width: 28rem;
+    width: 90%;
   }
 
   .card-login img {
@@ -150,7 +150,7 @@
 @media (max-width: 480px) {
 
   .card-login {
-    width: 20rem;
+    width: 90%;
     padding: 0.8rem;
   }
 

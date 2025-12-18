@@ -27,13 +27,18 @@ export class BinderComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.uid = this.authService.getUserUid();
+  this.authService.getUser$().subscribe(async user => {
+    if (!user) return;
+
+    this.uid = user.uid;
     this.pages = await this.photocardService.loadBinder(this.uid);
 
     if (this.pages.length === 0) {
       this.addPage();
     }
-  }
+  });
+}
+
 
   addPage() {
     this.pages.push({
@@ -43,7 +48,33 @@ export class BinderComponent implements OnInit {
   }
 
   removePage(index: number) {
-    this.pages.splice(index, 1);
+    Swal.fire({
+      title: "Deseja apagar a página?",
+      width: 600,
+      padding: "3em",
+      color: "#cc110eff",
+      background: "#ffb9b9ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.pages.splice(index, 1);
+          Swal.fire({
+            title: 'Página excluída com sucesso!',
+            color: "#e99392",
+            background: "#f5e2e2ff",
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        }
+    });
+
   }
 
   
@@ -68,13 +99,39 @@ export class BinderComponent implements OnInit {
   }
 
   removeImage(pageIndex: number, imgIndex: number) {
-    this.pages[pageIndex].images[imgIndex] = null;
+    Swal.fire({
+      title: "Deseja apagar a imagem?",
+      width: 600,
+      padding: "3em",
+      color: "#cc110eff",
+      background: "#ffb9b9ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.pages[pageIndex].images[imgIndex] = null;
+          Swal.fire({
+            title: 'Imagem excluída com sucesso!',
+            color: "#e99392",
+            background: "#f5e2e2ff",
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        }
+    });
   }
 
   async save() {
     await this.photocardService.saveBinder(this.uid, this.pages);
     Swal.fire({
       title: "Binder salvo com sucesso.",
+      icon: 'success',
       width: 600,
       padding: "3em",
       color: "#e99392",
@@ -89,7 +146,25 @@ export class BinderComponent implements OnInit {
 
   
   goBack() {
-    this.router.navigate(['/inicio']);
+    Swal.fire({
+      title: "Dados não salvos serão perdidos. Deseja voltar para a página inicial?",
+      width: 600,
+      padding: "3em",
+      color: "#e99392",
+      background: "#f5e2e2ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/inicio']);
+        }
+    });
   }
 
   trackById(index: number, page: PcPage) {

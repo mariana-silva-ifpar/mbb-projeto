@@ -1,33 +1,69 @@
 <div class="table-wrapper">
-    <table class="tabela">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Preço</th>
-          <th>Frete Int.</th>
-          <th>Frete Nac.</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Frete Int.</th>
+        <th>Frete Nac.</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <tr *ngFor="let item of itens">
+    <tbody>
+      @for (item of itens; track item.id) {
+        <tr>
           <td>{{ item.nome }}</td>
-          <td>{{ item.produtoPago ? 'Pago' : (item.precoProduto | currency:'BRL':'symbol':'1.2-2') }}</td>
-          <td>{{ item.freteInternacionalPago ? 'Pago' : (item.freteInternacional | currency:'BRL':'symbol':'1.2-2') }}</td>
-          <td>{{ item.freteNacionalPago ? 'Pago' : (item.freteNacional | currency:'BRL':'symbol':'1.2-2') }}</td>
-          <td>{{ item.statusEnvio }}</td>
 
           <td>
-            <button (click)="editar(item)">Editar</button>
-            <button (click)="excluir(item)">Excluir</button>
+            {{ item.produtoPago
+              ? 'Pago'
+              : (item.precoProduto | currency:'BRL':'symbol':'1.2-2')
+            }}
+          </td>
+
+          <td>
+            {{ item.freteInternacionalPago
+              ? 'Pago'
+              : (item.freteInternacional | currency:'BRL':'symbol':'1.2-2')
+            }}
+          </td>
+
+          <td>
+            {{ item.freteNacionalPago
+              ? 'Pago'
+              : (item.freteNacional | currency:'BRL':'symbol':'1.2-2')
+            }}
+          </td>
+
+          <td>{{ item.statusEnvio }}</td>
+
+          <td class="acoes">
+            <span
+              class="material-icons-outlined click"
+              title="Editar item"
+              (click)="editar(item)"
+            >
+              edit
+            </span>
+
+            <span
+              class="material-icons-outlined click"
+              title="Excluir item"
+              (click)="excluir(item)"
+            >
+              delete
+            </span>
           </td>
         </tr>
+      }
 
-        <tr *ngIf="itens.length === 0">
-          <td colspan="7">Nenhum item cadastrado</td>
+      @if (itens.length === 0) {
+        <tr>
+          <td colspan="6">Nenhum item cadastrado</td>
         </tr>
-      </tbody>
-    </table>
+      }
+    </tbody>
+  </table>
 </div>

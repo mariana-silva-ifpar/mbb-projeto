@@ -51,6 +51,9 @@
   cursor: pointer;
   font-weight: 600;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn.primary {
@@ -188,20 +191,38 @@
 
   /* ===== HEADER ===== */
   .binder-header {
-    flex-direction: column;
     gap: 12px;
     padding: 0;
   }
 
   .binder-actions {
     width: 100%;
-    flex-direction: column;
     gap: 10px;
+    justify-content: end;
   }
 
   .btn {
-    width: 100%;
-    font-size: 0.95rem;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .save-icon, .add-icon{
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .save-text {
+    display: none;
+  }
+
+  .add-text {
+    display: none;
   }
 
   .reset-btn {
@@ -215,10 +236,12 @@
 
   .page {
     width: 100%;
-    padding: 20px;
+    padding: 32px;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+    position: relative;
   }
+
 
   /* ===== CARDS ===== */
   .card {
@@ -229,14 +252,14 @@
 
   /* ===== BOTÕES DE REMOVER ===== */
   .remove-page {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
   }
 
   .remove-img {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
   }
 }

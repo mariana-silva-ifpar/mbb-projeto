@@ -53,8 +53,8 @@
 
 .save-btn {
   background: #ffe6f2;
-  border: 2px solid #ff99c8;
-  color: #d14b8f;
+  border: 2px solid #ff9aa2;
+  color: #ff9aa2;
 
   padding: 10px 14px;
   border-radius: 12px;
@@ -240,7 +240,7 @@
 ========================= */
 
 /* Mobile */
-@media (max-width: 800px) {
+@media (max-width: 855px) {
 
   /* HEADER VIRA GRID */
   .wishlist-header {

@@ -104,7 +104,7 @@
 @media (max-width: 768px) {
 
   .register-card {
-    width: 28rem;
+    width: 90%;
   }
 
   .register-card img {
@@ -127,7 +127,7 @@
 @media (max-width: 480px) {
 
   .register-card {
-    width: 20rem;
+    width: 90%;
     padding: 0.8rem;
   }
 
@@ -140,7 +140,7 @@
   }
 
   .register-card .input {
-    width: 90%;
+    width: 85%;
   }
 
   .register-card .submit-button {

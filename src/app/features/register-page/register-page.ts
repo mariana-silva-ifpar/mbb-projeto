@@ -80,6 +80,7 @@ export class RegisterPage {
                if (result.isDenied) {
                 Swal.fire("Cadastro não realizado.");
                 this.goToLoginPage();
+                
               }
             });
     }

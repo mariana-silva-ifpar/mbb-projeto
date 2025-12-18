@@ -29,9 +29,11 @@
 
   <label>Status de envio</label>
   <select formControlName="statusEnvio">
-    <option *ngFor="let s of statusOptions" [value]="s">
-      {{ s }}
-    </option>
+    @for (s of statusOptions; track s) {
+      <option [value]="s">
+        {{ s }}
+      </option>
+    }
   </select>
 
   <button type="submit">

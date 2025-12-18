@@ -6,3 +6,7 @@
 body{
     margin: 0;
 }
+
+.material-icons-outlined.white {
+  color: white;
+}

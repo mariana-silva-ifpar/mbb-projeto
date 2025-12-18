@@ -1,67 +1,61 @@
 <div class="container">
   <div class="binder-container">
-  <div class="binder-header">
-    <button class="reset-btn" (click)="goBack()"> ↩</button>
+    <div class="binder-header">
+      <button class="reset-btn" (click)="goBack()"> ↩</button>
 
-    <div class="binder-actions">
-      <button class="btn primary" (click)="addPage()">
-          ➕ Adicionar página
-      </button>
+      <div class="binder-actions">
+        <button class="btn primary" (click)="addPage()">
+          <span title="Adicionar página" class="material-icons-outlined white add-icon"> add </span>
+          <span class="add-text"> Adicionar página </span>
+        </button>
 
-      <button class="btn success" (click)="save()">
-          💾 Salvar
-      </button>
+        <button class="btn success" (click)="save()">
+          <span title="Salvar Binder" class="material-icons-outlined save-icon">save</span>
+          <span class="save-text">Salvar</span>
+        </button>
+      </div>
     </div>
-  </div>
 
-
-  <div class="pages">
-
-    <div
-      class="page"
-      *ngFor="let page of pages; let p = index; trackBy: trackById"
-    >
-
-   
-      <button
-        class="remove-page"
-        (click)="removePage(p)"
-      >
-        ✕
-      </button>
-
-    
-      <div
-        class="card"
-        *ngFor="let img of page.images; let i = index"
-      >
-
-
-        <div class="preview" *ngIf="img">
-          <img [src]="img" />
+    <div class="pages">
+      @for (page of pages; track page.id; let p = $index) {
+        <div class="page">
 
           <button
-            class="remove-img"
-            (click)="removeImage(p, i)"
+            class="remove-page"
+            (click)="removePage(p)"
           >
             ✕
           </button>
+
+          @for (img of page.images; track img; let i = $index) {
+            <div class="card">
+
+              @if (img) {
+                <div class="preview">
+                  <img [src]="img" />
+
+                  <button
+                    class="remove-img"
+                    (click)="removeImage(p, i)"
+                  >
+                    ✕
+                  </button>
+                </div>
+              } @else {
+                <div
+                  class="upload"
+                  (click)="addImage(p, i)"
+                >
+                  +
+                </div>
+              }
+
+            </div>
+          }
+
         </div>
-
-       
-        <div
-          class="upload"
-          *ngIf="!img"
-          (click)="addImage(p, i)"
-        >
-          +
-        </div>
-
-      </div>
-
+      }
     </div>
 
   </div>
-
-</div>
 </div>

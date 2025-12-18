@@ -7,36 +7,35 @@
     <h1 class="title">WISHLIST</h1>
 
     <div class="buttons">
-        <!-- SALVAR -->
+      <!-- SALVAR -->
       <button class="save-btn" (click)="saveWishlist()">
         <span class="material-icons save-icon">save</span>
         <span class="save-text">Salvar</span>
       </button>
 
-
-
-      <button class="clear-btn" (click)="resetWishlist()">🗑️</button>
+      <!-- DELETAR -->
+      <button class="clear-btn" (click)="resetWishlist()">
+        <span class="material-icons-outlined white">delete</span>
+      </button>
     </div>
-      
   </div>
 
   <!-- GRID -->
   <div class="photo-grid">
 
-    <div
-      class="photo-card"
-      *ngFor="let photo of photos; trackBy: trackById"
-    >
-      <img [src]="photo.url" class="photo-img" />
-      <div class="photo-title">{{ photo.title }}</div>
+    @for (photo of photos; track photo.id) {
+      <div class="photo-card">
+        <img [src]="photo.url" class="photo-img" />
+        <div class="photo-title">{{ photo.title }}</div>
 
-      <button
-        class="delete-btn"
-        (click)="removePhoto(photo.id)"
-      >
-        ✕
-      </button>
-    </div>
+        <button
+          class="delete-btn"
+          (click)="removePhoto(photo.id)"
+        >
+          ✕
+        </button>
+      </div>
+    }
 
     <!-- ADICIONAR -->
     <div class="photo-card add-card">

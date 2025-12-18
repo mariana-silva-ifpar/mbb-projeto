@@ -45,7 +45,7 @@ export class Wishlist implements OnInit {
 
       const reader = new FileReader();
       reader.onload = async () => {
-        const title = prompt('Digite um título para o photocard:') || 'Sem título';
+        const title = await this.getTitle()
 
         this.photos.push({
           id: crypto.randomUUID(),
@@ -60,6 +60,24 @@ export class Wishlist implements OnInit {
 
     input.click();
   }
+
+  async getTitle(): Promise<string> {
+  const { value: title } = await Swal.fire({
+    title: 'Insira um nome para o photocard.',
+    input: 'text',
+    inputPlaceholder: 'Ex: Hyunjin Miroh Regular Ver.',
+    showCancelButton: true,
+    color: "#e99392",
+    background: "#f5e2e2ff",
+    width: 600,
+    padding: "2em",
+    confirmButtonText: 'Salvar',
+    cancelButtonText: 'Cancelar',
+  });
+
+  return title || 'Sem título';
+}
+
 
   /* ================================
         REMOVER
@@ -77,6 +95,7 @@ export class Wishlist implements OnInit {
     Swal.fire({
       title: "Wishlist salva com sucesso.",
       width: 600,
+      icon: 'success',
       padding: "3em",
       color: "#e99392",
       background: "#f5e2e2ff",
@@ -108,7 +127,13 @@ export class Wishlist implements OnInit {
       confirmButtonText: `Sim`,
     }).then(async (result) => {
         if (result.isConfirmed) {
-        Swal.fire("Wishlist limpa com sucesso");
+        Swal.fire({
+          title:"Wishlist limpa com sucesso",
+          icon: 'success',
+          padding: "3em",
+          color: "#e99392",
+          background: "#f5e2e2ff",
+        });
         this.photos = [];
         await this.wishlistService.clear();
       }
@@ -119,7 +144,25 @@ export class Wishlist implements OnInit {
         VOLTAR
   ================================= */
   goBackToMenu() {
-    this.router.navigate(['/inicio']);
+    Swal.fire({
+      title: "Dados não salvos serão perdidos. Deseja voltar para a página inicial?",
+      width: 600,
+      padding: "3em",
+      color: "#e99392",
+      background: "#f5e2e2ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/inicio']);
+        }
+    });
   }
 
   trackById(index: number, item: WishlistItem) {

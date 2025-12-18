@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import {
   Auth,
+  authState,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile
+  updateProfile,
+  User
 } from '@angular/fire/auth';
 
 import { UserService } from './user.service';
 import { collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -85,5 +88,9 @@ export class AuthService {
     }
 
     return user.uid;
+  }
+
+  getUser$(): Observable<User | null> {
+    return authState(this.auth);
   }
 }
