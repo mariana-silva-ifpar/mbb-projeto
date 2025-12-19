@@ -92,6 +92,24 @@ export class PlanilhaComponent implements OnInit {
         }
 
   goBackToMenu() {
-    this.router.navigate(['/inicio']);
+    Swal.fire({
+      title: "Dados não salvos serão perdidos. Deseja voltar para a página inicial?",
+      width: 600,
+      padding: "3em",
+      color: "#e99392",
+      background: "#f5e2e2ff",
+      backdrop: `
+        rgba(66, 0, 0, 0.4)
+        left top
+        no-repeat
+      `,
+      showDenyButton: true,
+      denyButtonText: 'Não',
+      confirmButtonText: `Sim`,
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/inicio']);
+        }
+    });
   }
 }
